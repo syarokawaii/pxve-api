@@ -1,9 +1,9 @@
-FROM denoland/deno:1.46.3
+FROM denoland/deno:2.6.5
 
 # The port that your application listens to.
-EXPOSE 8000
+EXPOSE 3021
 
-ENV PORT 8000
+ENV PORT 3021
 
 WORKDIR /app
 

@@ -48,7 +48,7 @@ const description = /* markdown */ `
 
 与 [HibiAPI](https://github.com/mixmoe/HibiAPI) 部分兼容。
 
-A program that implements easy-to-use APIs for Pixiv-related websites, intended for use with the [Pixiv Viewer](https://github.com/asadahimeka/pxve-api).
+A program that implements easy-to-use APIs for Pixiv-related websites, intended for use with the [Pixiv Viewer](https://github.com/asadahimeka/pixiv-viewer).
 
 Partially compatible with HibiAPI.
 

@@ -32,7 +32,6 @@ export const hibiapiFallbackRoute = new Hono().on(
     url.protocol = 'https:'
     url.port = ''
     url.host = HIBIAPI_BASE
-    const resp = fetch(url, { headers: UA_HEADER })
-    return resp
+    return fetch(url, { headers: UA_HEADER })
   }
 )
