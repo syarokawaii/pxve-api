@@ -1,6 +1,5 @@
 import { join } from '@std/path'
 import { ensureDir } from '@std/fs'
-import { decompress } from '@fakoua/zip-ts'
 import { UA_HEADER } from '@lib/const.ts'
 import { pixivWebApi } from '../pixiv/web-api.ts'
 
@@ -10,7 +9,7 @@ self.onmessage = async event => {
   let { zip, rate, id, ext = 'avif' } = event.data
 
   try {
-    if (!rate) rate = 24
+    if (!rate) rate = 16
     if (!zip) {
       ;({ zip, rate } = await getMetadata(id))
     }
@@ -48,7 +47,23 @@ async function downloadAndUnzip(zipUrl: string, outputDir: string) {
   await ensureDir(outputDir)
   const zipPath = join(outputDir, 'ugoira.zip')
   await Deno.writeFile(zipPath, zipData)
-  await decompress(zipPath, outputDir)
+
+  let cmd = 'unzip'
+  let args = ['-o', zipPath, '-d', outputDir]
+  if (Deno.build.os === 'windows') {
+    cmd = 'PowerShell'
+    args = ['Expand-Archive', '-Path', `"${zipPath}"`, '-DestinationPath', `"${outputDir}"`, '-Force']
+  }
+  console.log(cmd, args.join(' '))
+  const unzip = new Deno.Command(cmd, { args })
+
+  const { success, stderr } = await unzip.output()
+  console.log('unzip success: ', success)
+  if (!success) {
+    const decoder = new TextDecoder()
+    console.error('unzip failed:', decoder.decode(stderr))
+    throw new Error('unzip failed')
+  }
 }
 
 async function convertImages(imagesDir: string, outputFilePath: string, rate: string, ext: UgoiraConvertExt = 'avif') {

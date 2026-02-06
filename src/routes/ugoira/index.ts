@@ -27,7 +27,7 @@ export const ugoiraRoute = new Hono().get(
         }),
         rate: z.string().regex(/^\d+$/).optional().meta({
           description: '动图转换帧率，可以不提供；不提供将自动计算；如果提供的话需要一并提供 `zip`。',
-          example: 24,
+          example: '16',
         }),
       }),
     },
