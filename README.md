@@ -82,6 +82,8 @@ docker run -d -p 3021:3021 --env-file .env pxve-api
 
 ### Pixiv 配置
 
+> 获取 RefreshToken 参考教程：https://www.nanoka.top/posts/e78ef86/
+
 | 环境变量 | 说明 | 必需 |
 |---------|------|------|
 | `PIXIV_COOKIE` | Pixiv Web API Cookie | 推荐 |
