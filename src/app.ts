@@ -18,7 +18,7 @@ const app = new Hono()
 
 app.use(logger())
 app.use(cors())
-app.use(secureHeaders())
+app.use(secureHeaders({ crossOriginResourcePolicy: 'same-site' }))
 app.use(blocker())
 app.get('*', etag())
 app.use(prettyJSON())
