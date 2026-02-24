@@ -21,11 +21,11 @@
     "crypto-js": "npm:crypto-js@4.2.0",
     "dayjs": "npm:dayjs@1.11.19",
     "google-translate-api-x": "npm:google-translate-api-x@10.7.2",
-    "hono": "npm:hono@^4.11.7",
+    "hono": "npm:hono@^4.12.2",
     "hono-zod-openapi": "npm:hono-zod-openapi@1.0.1",
     "isbot": "npm:isbot@5.1.32",
     "microsoft-translate-api": "npm:microsoft-translate-api@1.1.0",
-    "qs": "npm:qs@6.14.1",
+    "qs": "npm:qs@6.14.2",
     "sharp": "npm:sharp@0.34.5",
     "zod": "npm:zod@4.3.5"
   },
