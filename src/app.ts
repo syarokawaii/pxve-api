@@ -86,4 +86,8 @@ app.onError((err, c) => {
 
 const deduper = new RequestDeduper()
 const port = Number(Deno.env.get('PORT') ?? 3021)
-Deno.serve({ port }, (req, ...args) => deduper.run(req.url, async () => await app.fetch(req, ...args)))
+Deno.serve({ hostname: '0.0.0.0', port }, (req, ...args) =>
+  deduper.run(req.url, async () => await app.fetch(req, ...args))
+)
+
+export { app }
